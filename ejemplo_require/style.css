@@ -1,0 +1,39 @@
+.body__header {
+    background-color: #1F1F1F; /* Gris oscuro, suave para la cabecera */
+    height: 10vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.header__nav {
+    display: flex;
+    list-style: none;
+    background-color: #333333; /* Gris más oscuro para la barra de navegación */
+    padding: 0;
+    margin: 0;
+    color: white; /* Texto blanco para contraste */
+    width: auto;
+}
+
+.header__nav li {
+    margin-right: 20px; /* Espaciado entre los elementos */
+}
+
+.header__nav li:last-child {
+    margin-right: 0; /* Sin espaciado al final */
+}
+
+.header__nav a {
+    text-decoration: none;
+    color: #F4A261; /* Color de los enlaces, un naranja suave y moderno */
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header__nav a:hover {
+    background-color: #E76F51; /* Color más oscuro al pasar el ratón */
+    color: white; /* Cambio de color de texto a blanco para mejor visibilidad */
+}

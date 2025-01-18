@@ -1,0 +1,212 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Layout principal */
+.container {
+    display: flex;
+    flex: 1; /* Ocupa toda la altura disponible */
+    width: 100%;
+}
+
+/* Formulario buscador */
+#buscador-info {
+    background-color: #007bff; /* Fondo azul */
+    padding: 8%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#buscador-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30%;
+    font-weight: 600;
+    color: white;
+}
+
+/* Estilo del formulario */
+#pokemon-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+/* Input */
+#pokemon-form input {
+    padding: 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    width: 100%; /* Ocupa el 80% del contenedor */
+    box-sizing: border-box;
+    background-color: #f0f8ff; /* Fondo claro */
+    color: #333;
+}
+
+/* Botón */
+#pokemon-form button {
+    padding: 15px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    width: 80%; /* Ocupa el 80% del contenedor */
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+#pokemon-form button:hover {
+    background-color: #004090;
+}
+
+/* Panel de búsqueda (a la izquierda) */
+.search-panel {
+    width: 40%;
+    background-color: #007bff;
+    padding: 20px;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.search-panel h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.search-panel form {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-panel form input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.search-panel form button {
+    padding: 10px;
+    background-color: #004080;
+    color: white;
+    cursor: pointer;
+}
+
+.search-panel form button:hover {
+    background-color: #003366;
+}
+
+/* Carta del Pokémon */
+.pokemon-info {
+    width: 100%;
+    text-align: center;
+    padding: 40px;
+    box-sizing: border-box;
+    background-image: url('https://pm1.aminoapps.com/6159/24beb062995cfbdd8dc9e00534767b06ed76f3d4_hq.jpg'); /* Fondo de Pokémon */
+    background-size: cover; /* Para cubrir todo el área del div */
+    background-position: center; /* Centrar la imagen */
+    background-attachment: fixed; /* Fondo fijo, no se desplaza al hacer scroll */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    color: white; /* Color del texto */
+    position: relative;
+}
+
+/* Agregar un filtro de desenfoque al fondo para mejorar la visibilidad del contenido */
+.pokemon-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Fondo oscuro semi-transparente para mejorar el contraste */
+    border-radius: 10px; /* Bordes redondeados */
+    z-index: -1; /* Coloca el filtro detrás del contenido */
+}
+
+/* Título de la información de Pokémon */
+.pokemon-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Carta de Pokémon */
+.pokemon-card {
+    width: 80%; /* Tamaño moderado para la carta */
+    max-width: 500px;
+    border: 5px solid #FFD700; /* Borde dorado */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0 auto; /* Centrado horizontal */
+}
+
+/* Foto del Pokémon */
+.pokemon-photo {
+    width: 100%;  /* Ocupa el 80% del ancho de la carta */
+    height: 200px; /* Ajusta la altura de la foto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.pokemon-photo img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; /* La imagen cubre todo el espacio sin deformarse */
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+/* Datos del Pokémon */
+.pokemon-datos {
+    width: 100%;
+    text-align: left;
+}
+
+.pokemon-datos h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.pokemon-datos p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 5px 0;
+}
