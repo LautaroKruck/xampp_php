@@ -1,3 +1,15 @@
+<?php
+require_once '../includes/PokemonController.php';
+
+$pokemonController = new PokemonController();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pokemon-name'])) {
+    $pokemonName = $_POST['pokemon-name'];
+    $pokemonData = $pokemonController->getPokemonData($pokemonName);
+    $typeColors = $pokemonController->getTypeColors();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
