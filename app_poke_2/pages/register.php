@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/register.css">
     <title>Formulario de Registro</title>
 
 </head>
 <body>
-    <?php include('includes/header.php'); ?>
+    <?php include('../includes/header.php'); ?>
 
-    <form action="login.php" method="POST">
+    <form action="logica.php" method="POST">
         <h2>Registro</h2>
         <div class="form-group">
             <label for="nombre">Nombre</label>
@@ -35,7 +35,7 @@
         </div>
     </form>
     
-    <?php include('includes/footer.php'); ?>
+    <?php include('../includes/footer.php'); ?>
 
 </body>
 

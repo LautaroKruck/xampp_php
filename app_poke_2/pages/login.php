@@ -6,13 +6,13 @@
     <title>Login</title>
     <!-- Enlaces a archivos CSS -->
     <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 <body>
     <?php include('../includes/header.php'); ?>
 
-    <form action="do_login.php" method="POST" >
+    <form action="logica.php" method="POST" >
     <h2>Login</h2>
         <div class="form-group">
             <label for="nombre">Nombre</label>

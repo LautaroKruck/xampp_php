@@ -46,6 +46,8 @@
                     $datos_pokemon = json_decode($result, true);
 
                     if (isset($datos_pokemon['id'])) {
+                        $primer_tipo = $datos_pokemon['types'][0]['type']['name'];
+                        $color = $colores_tipos[$primer_tipo] ?? "#ccc";
                         // Mostrar información del Pokémon
                         echo "<div class='pokemon-card'>";
                         echo "<img style='border: 5px solid $color' src='{$datos_pokemon['sprites']['front_default']}' alt='Imagen del Pokémon' />";

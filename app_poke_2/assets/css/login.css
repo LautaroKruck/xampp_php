@@ -1,13 +1,24 @@
-/* Estilos generales */
-body {
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #74ebd5, #acb6e5); /* Fondo degradado */
-    height: 100vh;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Layout principal */
+.container {
+    display: flex;
+    flex: 1; /* Ocupa toda la altura disponible */
+    width: 100%;
 }
 
 /* Contenedor del formulario */

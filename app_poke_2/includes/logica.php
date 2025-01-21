@@ -94,18 +94,38 @@
         }
 
         // Manejo de registros
-        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])) {
-            $users = loadFromJson();
-            $name = trim($_POST['name']);
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
-
-            // Agregar el nuevo usuario al archivo JSON
-            $newUser = ['name' => $name, 'email' => $email, 'password' => $password];
-            $users[] = $newUser;
-            saveToJson($users);
-
-            echo "<p class='success'>Registro exitoso, por favor inicie sesión.</p>";
+        if (
+            isset($_POST["user_id"]) &&
+            isset($_POST["user_name"]) &&
+            isset($_POST["user_email"]) &&
+            isset($_POST["user_pass"])
+        ) {
+            $id = htmlspecialchars($_POST["user_id"]);
+            $name = htmlspecialchars($_POST["user_name"]);
+            $email = htmlspecialchars($_POST["user_email"]);
+            $pass = htmlspecialchars($_POST["user_pass"]);
+        
+            // Validar si el usuario ya existe
+            if ($id === $usuario->getId() && $email === $usuario->getEmail()) {
+                $registro_incorrecto = true;
+                require_once "index.php";
+            } else {
+                $newUser = new Usuario($id, $name, $email, $pass);
+        
+                $gestionFichero = new GestionFichero("usuarios.json");
+                $usuarios = $gestionFichero->leerFichero();
+                $usuarios[] = [
+                    'id' => $newUser->getId(),
+                    'nombre' => $newUser->getNombre(),
+                    'email' => $newUser->getEmail(),
+                    'password' => $newUser->getPassword()
+                ];
+        
+                $gestionFichero->escribirFichero($usuarios);
+        
+                $name = $newUser->getNombre(); // Para usar en el archivo "registroCorrecto.php"
+                require_once "registroCorrecto.php";
+            }
         }
     }
 
@@ -125,5 +145,6 @@
         $file = 'users.json';
         file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
     }
+
 
 ?>
