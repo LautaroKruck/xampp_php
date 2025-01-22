@@ -9,9 +9,9 @@
 
 </head>
 <body>
-    <?php include('../includes/header.php'); ?>
+    <?php include('../includes/extras/header.php'); ?>
 
-    <form action="logica.php" method="POST">
+    <form action="../includes/RegisterController.php" method="POST">
         <h2>Registro</h2>
         <div class="form-group">
             <label for="nombre">Nombre</label>
@@ -35,7 +35,7 @@
         </div>
     </form>
     
-    <?php include('../includes/footer.php'); ?>
+    <?php include('../includes/extras/footer.php'); ?>
 
 </body>
 
