@@ -13,5 +13,10 @@
         "nombre": "pepe",
         "email": "pepe@gmail.com",
         "password": "$2y$10$rJJYY3dvVA98FXT9W5aj6uIe2rXz8PvgARDUa0JEJHOReo\/bESiJK"
+    },
+    {
+        "nombre": "lau",
+        "email": "lau@gmail.com",
+        "password": "$2y$10$aFc\/7JAEf7VXLVTD91UftewSRkN15N0GTiVf76ho4EZSSd8NZ9hQa"
     }
 ]

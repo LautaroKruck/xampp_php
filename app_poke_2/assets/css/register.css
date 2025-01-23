@@ -1,14 +1,27 @@
-/* Estilo general */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
+
+/* Layout principal */
+.container {
+    display: flex;
+    flex: 1; /* Ocupa toda la altura disponible */
+    width: 100%;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
 
 /* Formulario de Registro */
 form {

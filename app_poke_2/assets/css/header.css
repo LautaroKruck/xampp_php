@@ -6,6 +6,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed; /* Fijo en la parte superior */
+    top: 0; /* Asegura que esté en la parte superior */
+    left: 0; /* Asegura que esté alineado con el borde izquierdo */
+    right: 0; /* Asegura que ocupe todo el ancho */
+    z-index: 1000; /* Para asegurarse de que esté por encima de otros elementos */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
 }
 
 header h1 a {

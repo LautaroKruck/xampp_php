@@ -11,16 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $repeatPassword = $_POST['repeat-password'];
 
         if ($password !== $repeatPassword) {
-                echo "Las contraseñas no coinciden.";
+                $error = "Las contraseñas no coinciden.";
                 exit;
-            }
-
-        $registerController = new RegisterController('../data/users.json');
-
-        if ($registerController->register($nombre, $email, $password)) {
-            header('Location: api.php');
         } else {
-            $error = 'El usuario ya está registrado.';
+            $registerController = new RegisterController('../data/users.json');
+
+            if ($registerController->register($nombre, $email, $password)) {
+                header('Location: api.php');
+            } else {
+                $error = 'El usuario ya está registrado.';
+            }
         }
     } else {
         $error = 'Por favor, complete todos los campos.';
