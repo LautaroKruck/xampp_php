@@ -4,7 +4,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: relative;
+    position: fixed; /* Fijo en la parte inferior */
     bottom: 0;
     width: 100%;
 }

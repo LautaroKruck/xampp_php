@@ -1,5 +1,5 @@
 <?php
-require_once "GestionFichero.php";
+require_once 'GestionFichero.php';
 
 class LoginController {
     private $gestionFichero;
@@ -8,20 +8,21 @@ class LoginController {
         $this->gestionFichero = new GestionFichero($rutaUsuarios);
     }
 
-    public function login(string $email, string $password): ?Usuario {
-        $usuarios = $this->gestionFichero->leerFichero();
+    public function login(string $nombre, string $email, string $password) {
+        $users = $this->gestionFichero->leerFichero();
 
-        foreach ($usuarios as $usuarioData) {
-            if ($usuarioData['email'] === $email && $usuarioData['password'] === $password) {
-                return new Usuario(
-                    $usuarioData['nombre'],
-                    $usuarioData['email'],
-                    $usuarioData['password']
-                );
+        foreach ($users as $usuarioData) {
+            // Verifica que las claves existen antes de acceder a ellas
+            if (
+                isset($usuarioData['nombre'], $usuarioData['email'], $usuarioData['password']) &&
+                $usuarioData['nombre'] === $nombre &&
+                $usuarioData['email'] === $email &&
+                password_verify($password, $usuarioData['password']) // Verifica la contraseña hasheada
+            ) {
+                return true; // Login exitoso
             }
         }
 
-        return null;
+        return false; // Credenciales incorrectas
     }
 }
-?>

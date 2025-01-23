@@ -2,6 +2,8 @@
 require_once '../includes/PokemonController.php';
 
 $pokemonController = new PokemonController();
+$pokemonData = null;
+$typeColors = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pokemon-name'])) {
     $pokemonName = $_POST['pokemon-name'];
@@ -28,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pokemon-name'])) {
     <main class="container">
         <div id="buscador-info" class="buscador-info">
             <h1>Nombre del Pokémon</h1>
-            <form id="pokemon-form" method="POST" action="../includes/PokemonController.php">
+            <form id="pokemon-form" method="POST" action="api.php">
                 <input
                     type="text"
                     name="pokemon-name"
@@ -44,8 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pokemon-name'])) {
             <h1>Información de Pokémon</h1>
             <!-- La información del Pokémon será generada aquí -->
             <?php
-                // Incluir lógica desde el archivo logica.php
-                require_once '../includes/PokemonController.php'; 
+            if ($pokemonData) {
+                $pokemonController->renderPokemonCard($pokemonData, $typeColors);
+            }
             ?>
         </div>
     </main>

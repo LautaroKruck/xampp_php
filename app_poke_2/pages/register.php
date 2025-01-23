@@ -1,3 +1,33 @@
+<?php
+require_once '../includes/RegisterController.php';
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['repeat-password'])) {
+        $nombre = $_POST['nombre'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $repeatPassword = $_POST['repeat-password'];
+
+        if ($password !== $repeatPassword) {
+                echo "Las contraseñas no coinciden.";
+                exit;
+            }
+
+        $registerController = new RegisterController('../data/users.json');
+
+        if ($registerController->register($nombre, $email, $password)) {
+            header('Location: api.php');
+        } else {
+            $error = 'El usuario ya está registrado.';
+        }
+    } else {
+        $error = 'Por favor, complete todos los campos.';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,14 +35,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/register.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
     <title>Formulario de Registro</title>
 
 </head>
 <body>
     <?php include('../includes/extras/header.php'); ?>
 
-    <form action="../includes/RegisterController.php" method="POST">
+    <form action="register.php" method="POST">
         <h2>Registro</h2>
+        <?php if ($error): ?>
+            <p style="color: red;"><?php echo $error; ?></p>
+        <?php endif; ?>
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" placeholder="Introduce tu nombre" required>

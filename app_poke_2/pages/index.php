@@ -1,5 +1,32 @@
+<?php
+require_once '../includes/LoginController.php';
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['nombre'], $_POST['email'], $_POST['password'])) {
+        $nombre = trim($_POST['nombre']);
+        $email = trim($_POST['email']);
+        $password = $_POST['password'];
+
+        // Ruta correcta al archivo JSON
+        $loginController = new LoginController('../data/users.json');
+
+        // Intenta iniciar sesión
+        if ($loginController->login($nombre, $email, $password)) {
+            header('Location: api.php'); // Redirige al API tras iniciar sesión
+            exit;
+        } else {
+            $error = 'Nombre, correo electrónico o contraseña incorrectos.';
+        }
+    } else {
+        $error = 'Por favor, complete todos los campos.';
+    }
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +39,11 @@
 <body>
     <?php include('../includes/extras/header.php'); ?>
 
-    <form action="../includes/LoginController.php" method="POST" >
-    <h2>Login</h2>
+    <form action="index.php" method="POST">
+        <h2>Login</h2>
+        <?php if ($error): ?>
+            <p style="color: red;"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
+        <?php endif; ?>
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" placeholder="Introduce tu nombre" required>
@@ -33,7 +63,5 @@
     </form>
 
     <?php include('../includes/extras/footer.php'); ?>
-    
 </body>
-
 </html>

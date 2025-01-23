@@ -1,31 +1,36 @@
 <?php
-require_once "Usuario.php";
-require_once "GestionFichero.php";
+require_once 'GestionFichero.php';
 
-class RegistroController {
+class RegisterController {
     private $gestionFichero;
 
     public function __construct(string $rutaUsuarios) {
         $this->gestionFichero = new GestionFichero($rutaUsuarios);
     }
 
-    public function registrarUsuario(string $name, string $email, string $password): bool {
-        $usuarios = $this->gestionFichero->leerFichero();
-
-        // Verificar si el email ya está registrado
-        foreach ($usuarios as $usuarioData) {
-            if ($usuarioData['email'] === $email) {
-                return false;
+    public function register(string $nombre, string $email, string $password) {
+        $users = $this->gestionFichero->leerFichero();
+    
+        foreach ($users as $usuarioData) {
+            // Verifica que las claves existan antes de acceder a ellas
+            if (isset($usuarioData['nombre'], $usuarioData['email'])) {
+                if ($usuarioData['nombre'] === $nombre || $usuarioData['email'] === $email) {
+                    return false; // Usuario ya registrado
+                }
             }
         }
-
-        // Crear nuevo usuario y agregarlo al archivo
-        $nuevoUsuario = new Usuario($name, $email, $password);
-        $usuarios[] = $nuevoUsuario->jsonSerialize();
-
-        $this->gestionFichero->escribirFichero($usuarios);
-
-        return true;
+    
+        $nuevoUsuario = [
+            'nombre' => $nombre,
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_DEFAULT) // Contraseña segura
+        ];
+        array_push($users, $nuevoUsuario);
+        $this->gestionFichero->escribirFichero($users);
+    
+        return true; // Registro exitoso
     }
+    
 }
 ?>
+

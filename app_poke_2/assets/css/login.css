@@ -1,29 +1,18 @@
-/* Reset básico */
-* {
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: #f0f0f0;
-    color: #333;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Layout principal */
-.container {
-    display: flex;
-    flex: 1; /* Ocupa toda la altura disponible */
-    width: 100%;
-}
-
-/* Contenedor del formulario */
+/* Formulario de Login */
 form {
-    background-color: #ffffff;
+    background-color: #fff;
     padding: 20px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -32,61 +21,62 @@ form {
     text-align: center;
 }
 
-/* Título del formulario */
-h1 {
+form h2 {
     margin-bottom: 20px;
-    font-size: 2rem;
-    color: #333333;
+    font-size: 24px;
+    color: #333;
 }
 
-/* Estilo de las etiquetas */
-label {
-    font-size: 1rem;
-    color: #555555;
-    display: block;
-    margin-bottom: 5px;
+.form-group {
+    margin-bottom: 15px;
     text-align: left;
 }
 
-/* Estilo de los inputs */
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1rem;
+label {
+    font-size: 14px;
+    color: #555;
 }
 
-/* Estilo del botón */
-button {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     width: 100%;
     padding: 10px;
-    font-size: 1rem;
-    color: white;
-    background-color: #007bff;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Botones */
+button {
+    padding: 10px 15px;
+    font-size: 14px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
-button:hover {
-    background-color: #0056b3;
+button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
 }
 
-/* Responsividad */
-@media (max-width: 768px) {
-    form {
-        padding: 15px 20px;
-    }
+button[type="submit"]:hover {
+    background-color: #287a3b;
+}
 
-    h1 {
-        font-size: 1.8rem;
-    }
+button[type="reset"] {
+    background-color: #f44336;
+    color: #fff;
+}
 
-    input, button {
-        font-size: 0.9rem;
-    }
+button[type="reset"]:hover {
+    background-color: #d32f2f;
 }
